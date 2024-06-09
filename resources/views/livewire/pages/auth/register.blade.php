@@ -80,8 +80,8 @@ new #[Layout('layouts.guest')] class extends Component
                 {{ __('Already registered?') }}
             </a>
 
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
+            <x-primary-button wire:loading.class="opacity-70" class="ms-4">
+                <x-spinner-button>{{ __('Log in') }}</x-spinner-button>
             </x-primary-button>
         </div>
     </form>
