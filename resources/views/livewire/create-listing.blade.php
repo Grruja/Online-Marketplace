@@ -2,7 +2,7 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <h1 class="p-6 text-gray-900">
-                Add Your Listing
+                Create New Listing
             </h1>
         </div>
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 mt-10">
