@@ -39,6 +39,8 @@ class CreateListing extends Component
         ));
 
         $this->reset();
+
+        session()->flash('success', 'Listing created successfully.');
         $this->redirectRoute('dashboard', navigate: true);
     }
 
