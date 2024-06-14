@@ -27,6 +27,8 @@
                 </header>
             @endif
 
+            <x-success-message />
+
             <!-- Page Content -->
             <main>
                 {{ $slot }}
