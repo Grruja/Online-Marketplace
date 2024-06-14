@@ -24,7 +24,7 @@ class CreateListing extends Component
         ];
     }
 
-    public function updated($propertyName)
+    public function updated($propertyName): void
     {
         $this->validateOnly($propertyName);
     }
