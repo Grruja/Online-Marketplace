@@ -71,7 +71,7 @@ new class extends Component
                 </x-secondary-button>
 
                 <x-danger-button wire:loading.class="opacity-70" class="ms-3">
-                    <x-spinner-button>{{ __('Delete Account') }}</x-spinner-button>
+                    <x-spinner-button :target="__('deleteUser')">{{ __('Delete Account') }}</x-spinner-button>
                 </x-danger-button>
             </div>
         </form>

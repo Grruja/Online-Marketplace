@@ -64,7 +64,7 @@ new #[Layout('layouts.guest')] class extends Component
             @endif
 
             <x-primary-button wire:loading.class="opacity-70" class="ms-4">
-                <x-spinner-button>{{ __('Log in') }}</x-spinner-button>
+                <x-spinner-button :target="__('login')">{{ __('Log in') }}</x-spinner-button>
             </x-primary-button>
         </div>
     </form>
