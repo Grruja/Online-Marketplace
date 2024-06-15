@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ListingImage extends Model
 {
-    protected $table = 'listings_images';
+    protected $table = 'listing_images';
 
     protected $fillable = [
         'listing_id',
