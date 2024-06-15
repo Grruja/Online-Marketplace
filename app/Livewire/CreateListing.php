@@ -3,6 +3,8 @@
 namespace App\Livewire;
 
 use App\Models\Listing;
+use App\Models\ListingImage;
+use App\Services\ImageService;
 use Illuminate\Http\UploadedFile;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -18,13 +20,13 @@ class CreateListing extends Component
     public ?UploadedFile $image = null;
     public string $description = '';
 
-    public function rules(): array
+    protected function rules(): array
     {
         return [
             'title' => 'required|string|min:2|max:255',
             'price' => 'required|numeric|min:0.1',
-            'condition' => 'required|in:' . implode(',', config('listing.condition')),
-            'category' => 'required|in:' . implode(',', config('listing.category')),
+            'condition' => 'required|in:'.implode(',', config('listing.condition')),
+            'category' => 'required|in:'.implode(',', config('listing.category')),
             'image' => 'required|image|mimes:jpeg,jpg,png|max:2048',
             'description' => 'required|string|min:10|max:1000',
         ];
@@ -39,12 +41,13 @@ class CreateListing extends Component
     {
         $this->validate();
 
-        Listing::create(array_merge(
+        $listing = Listing::create(array_merge(
             ['user_id' => auth()->id()],
             $this->only(['title', 'price', 'condition', 'category', 'description'])
         ));
 
-        $this->reset();
+        $imagePath = app(ImageService::class)->storeImageReturnPath($this->image);
+        ListingImage::create(['listing_id' => $listing->id, 'image' => $imagePath,]);
 
         session()->flash('success', 'Listing created successfully.');
         $this->redirectRoute('dashboard', navigate: true);
