@@ -3,14 +3,19 @@
 namespace App\Livewire;
 
 use App\Models\Listing;
+use Illuminate\Http\UploadedFile;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class CreateListing extends Component
 {
+    use WithFileUploads;
+
     public string $title = '';
     public string $price = '';
     public string $condition = '';
     public string $category = '';
+    public ?UploadedFile $image = null;
     public string $description = '';
 
     public function rules(): array
@@ -20,6 +25,7 @@ class CreateListing extends Component
             'price' => 'required|numeric|min:0.1',
             'condition' => 'required|in:' . implode(',', config('listing.condition')),
             'category' => 'required|in:' . implode(',', config('listing.category')),
+            'image' => 'required|image|mimes:jpeg,jpg,png|max:2048',
             'description' => 'required|string|min:10|max:1000',
         ];
     }
