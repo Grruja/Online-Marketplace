@@ -27,7 +27,7 @@ class CreateListing extends Component
             'price' => 'required|numeric|min:0.1',
             'condition' => 'required|in:'.implode(',', config('listing.condition')),
             'category' => 'required|in:'.implode(',', config('listing.category')),
-            'image' => 'required|image|mimes:jpeg,jpg,png|max:2048',
+            'image' => 'required|image|mimes:jpeg,jpg,png|max:5120',
             'description' => 'required|string|min:10|max:1000',
         ];
     }
