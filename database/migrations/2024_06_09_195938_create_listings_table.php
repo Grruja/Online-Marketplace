@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('description');
             $table->enum('condition', config('listing.condition'));
             $table->decimal('price', 8, 2);
-            $table->enum('category', config('listing.category'));
+            $table->enum('category', array_merge(...array_values(config('listing.category'))));
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
