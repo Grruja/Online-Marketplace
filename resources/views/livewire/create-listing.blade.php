@@ -1,5 +1,5 @@
 <div class="py-12">
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <h1 class="p-6 text-gray-900">
                 Create New Listing
@@ -19,7 +19,7 @@
                 </div>
                 <div class="mt-5">
                     <x-input-label for="condition" :value="__('Condition')" />
-                    <select wire:model.live.debounce.500ms="condition" id="condition" required class="cursor-pointer border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full">
+                    <select wire:model="condition" id="condition" required class="cursor-pointer border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full">
                         <option disabled selected value=""></option>
                         @foreach(config('listing.condition') as $condition)
                             <option value="{{ $condition }}">{{ ucwords($condition) }}</option>
@@ -29,12 +29,7 @@
                 </div>
                 <div class="mt-5">
                     <x-input-label for="category" :value="__('Category')" />
-                    <select wire:model.live.debounce.500ms="category" id="category" required class="cursor-pointer border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full">
-                        <option disabled selected value=""></option>
-                        @foreach(config('listing.category') as $category)
-                            <option value="{{ $category }}">{{ ucwords($category) }}</option>
-                        @endforeach
-                    </select>
+                    <x-select-category-input required/>
                     @error('category') <em class="text-red-600 text-sm">{{ $message }}</em> @enderror
                 </div>
                 <div class="mt-5">
