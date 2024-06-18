@@ -18,7 +18,7 @@ return [
             'stamps',
         ],
         'home & garden' => [
-            'yard, garden & outdoor',
+            'garden & outdoor',
             'crafts',
             'home improvement',
             'pet supplies',
@@ -39,7 +39,8 @@ return [
             'computers & laptops',
             'tablets',
             'cameras & photo',
-            'tv, audio & surveillance',
+            'tv & audio',
+            'surveillance',
             'cell phones & accessories',
             'smart home devices',
         ],
