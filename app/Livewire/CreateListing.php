@@ -6,6 +6,7 @@ use App\Models\Listing;
 use App\Models\ListingImage;
 use App\Services\ImageService;
 use Illuminate\Http\UploadedFile;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -16,7 +17,10 @@ class CreateListing extends Component
     public string $title = '';
     public string $price = '';
     public string $condition = '';
-    public string $category = '';
+
+    #[Validate(as: 'category')]
+    public int $subcategory_id = 0;
+
     public ?UploadedFile $image = null;
     public string $description = '';
 
@@ -26,7 +30,7 @@ class CreateListing extends Component
             'title' => 'required|string|min:2|max:255',
             'price' => 'required|numeric|min:0.1',
             'condition' => 'required|in:'.implode(',', config('listing.condition')),
-            'category' => 'required|in:'.implode(',', array_merge(...array_values(config('listing.category')))),
+            'subcategory_id' => 'required|exists:subcategories,id',
             'image' => 'required|image|mimes:jpeg,jpg,png|max:5120',
             'description' => 'required|string|min:10|max:1000',
         ];
@@ -43,7 +47,7 @@ class CreateListing extends Component
 
         $listing = Listing::create(array_merge(
             ['user_id' => auth()->id()],
-            $this->only(['title', 'price', 'condition', 'category', 'description'])
+            $this->only(['title', 'price', 'condition', 'subcategory_id', 'description'])
         ));
 
         $imagePath = app(ImageService::class)->storeImageReturnPath($this->image);
