@@ -18,10 +18,11 @@ return new class extends Migration
             $table->text('description');
             $table->enum('condition', config('listing.condition'));
             $table->decimal('price', 8, 2);
-            $table->enum('category', array_merge(...array_values(config('listing.category'))));
+            $table->unsignedBigInteger('subcategory_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('subcategory_id')->references('id')->on('subcategories')->onDelete('cascade');
         });
     }
 
