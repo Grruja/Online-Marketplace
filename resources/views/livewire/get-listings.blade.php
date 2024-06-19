@@ -3,7 +3,7 @@
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <form class="p-6 text-gray-900 flex gap-2 sm:flex-row flex-col items-center">
                 <div class="sm:w-fit w-full">
-                    <x-select-category-input>Select by category</x-select-category-input>
+                    <livewire:select-category :placeholder="'Select by category'"/>
                 </div>
                 <div class="w-full">
                     <x-search-input />

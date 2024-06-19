@@ -29,8 +29,8 @@
                 </div>
                 <div class="mt-5">
                     <x-input-label for="category" :value="__('Category')" />
-                    <x-select-category-input required/>
-                    @error('category') <em class="text-red-600 text-sm">{{ $message }}</em> @enderror
+                    <livewire:select-category :attribute="'required'"/>
+                    @error('subcategory_id') <em class="text-red-600 text-sm">{{ $message }}</em> @enderror
                 </div>
                 <div class="mt-5">
                     <p class="block font-medium text-sm text-gray-700 mb-1">Upload Image</p>
